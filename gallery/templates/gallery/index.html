@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="" method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" />
+    </form>
+       <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row">
+            {%if not filter.qs %}
+              <h2>Upload Image</h2>
+              {%endif%}
+            {% for obj in filter.qs %}
+<!--                {{ obj.name }}-->
+                <div class="col-md-2">
+                      <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" src="{{obj.image.url}}" alt="">
+                      </div>
+                </div>
+                <br />
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+{% endblock %}
